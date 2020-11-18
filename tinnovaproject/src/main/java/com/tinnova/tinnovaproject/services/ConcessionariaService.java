@@ -16,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -75,8 +76,8 @@ public class ConcessionariaService {
         veiculo.setAno(veiculoDTO.getAno());
         veiculo.setDescricao(veiculoDTO.getDescricao());
         veiculo.setVendido(veiculoDTO.getVendido());
-        veiculo.setDataRegistro(LocalDateTime.now());
-        veiculo.setDataAtualizacao(LocalDateTime.now());
+        veiculo.setDataRegistro(this.converteDataParaString(LocalDateTime.now()));
+        veiculo.setDataAtualizacao(this.converteDataParaString(LocalDateTime.now()));
 
         veiculoRepository.save(veiculo);
 
@@ -103,7 +104,7 @@ public class ConcessionariaService {
             veiculo.setAno(veiculoDTO.getAno());
             veiculo.setDescricao(veiculoDTO.getDescricao());
             veiculo.setVendido(veiculoDTO.getVendido());
-            veiculo.setDataAtualizacao(LocalDateTime.now());
+            veiculo.setDataAtualizacao(this.converteDataParaString(LocalDateTime.now()));
 
         }else {
             LOGGER.error("Veiculo com id "+id+" Nao Encontrado!");
@@ -132,6 +133,7 @@ public class ConcessionariaService {
      * @implNote Validacao de fabricante feita atraves de enum para nao ter que gerar
      * dump de banco ou automatizar um insert na subida.
      * Em termos praticos faria a validacao e controle dos fabricantes no banco de dados.
+     * Optei por essa solucao por falta de tempo.
      */
     private FabricanteEnum validaFabricante(String fabricante){
         return FabricanteEnum.fromString(fabricante);
@@ -141,5 +143,12 @@ public class ConcessionariaService {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode patched = patch.apply(objectMapper.convertValue(targetVeiculo, JsonNode.class));
         return objectMapper.treeToValue(patched, Veiculo.class);
+    }
+
+    private String converteDataParaString(LocalDateTime localDateTime){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedDateTime = localDateTime.format(formatter); // "1986-04-08 12:30"
+
+        return formattedDateTime;
     }
 }

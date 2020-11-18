@@ -1,7 +1,5 @@
 package com.tinnova.tinnovaproject.model.dto;
 
-import java.time.LocalDateTime;
-
 public class VeiculoDTO {
 
     private String fabricante;
@@ -9,13 +7,13 @@ public class VeiculoDTO {
     private Boolean isVendido;
     private Integer ano;
     private String descricao;
-    private LocalDateTime dataRegistro;
-    private LocalDateTime dataAtualizacao;
+    private String dataRegistro;
+    private String dataAtualizacao;
 
     public VeiculoDTO() {
     }
 
-    public VeiculoDTO(String fabricante, String marca, Boolean isVendido, Integer ano, String descricao, LocalDateTime dataRegistro, LocalDateTime dataAtualizacao) {
+    public VeiculoDTO(String fabricante, String marca, Boolean isVendido, Integer ano, String descricao, String dataRegistro, String dataAtualizacao) {
         this.fabricante = fabricante;
         this.marca = marca;
         this.isVendido = isVendido;
@@ -65,19 +63,19 @@ public class VeiculoDTO {
         this.descricao = descricao;
     }
 
-    public LocalDateTime getDataRegistro() {
+    public String getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(LocalDateTime dataRegistro) {
+    public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
 
-    public LocalDateTime getDataAtualizacao() {
+    public String getDataAtualizacao() {
         return dataAtualizacao;
     }
 
-    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+    public void setDataAtualizacao(String dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
 }

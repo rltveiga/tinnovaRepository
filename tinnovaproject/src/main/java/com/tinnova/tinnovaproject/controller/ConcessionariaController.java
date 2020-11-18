@@ -45,7 +45,7 @@ public class ConcessionariaController {
 
     @PatchMapping(path = "/veiculos/{id}")
     public ResponseEntity<VeiculoDTO> updateVeiculo(@RequestBody JsonPatch veiculoParcial, @PathVariable("id") Long veiculoId) throws JsonPatchException, JsonProcessingException {
-        VeiculoDTO veiculoDTO = concessionariaService.updateVeiculo(veiculoId, veiculoParcial);
+         VeiculoDTO veiculoDTO = concessionariaService.updateVeiculo(veiculoId, veiculoParcial);
         return ResponseEntity.ok(veiculoDTO);
     }
 

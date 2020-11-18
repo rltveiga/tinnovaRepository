@@ -1,7 +1,6 @@
 package com.tinnova.tinnovaproject.model.domain;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name="TB_VEICULO")
@@ -28,10 +27,10 @@ public class Veiculo {
     private String descricao;
 
     @Column(name = "DT_CRIACAO", nullable = false)
-    private LocalDateTime dataRegistro;
+    private String dataRegistro;
 
     @Column(name = "DT_ATUALIZACAO", nullable = false)
-    private LocalDateTime dataAtualizacao;
+    private String dataAtualizacao;
 
     public Long getId() {
         return id;
@@ -81,19 +80,19 @@ public class Veiculo {
         this.descricao = descricao;
     }
 
-    public LocalDateTime getDataRegistro() {
+    public String getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(LocalDateTime dataRegistro) {
+    public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
 
-    public LocalDateTime getDataAtualizacao() {
+    public String getDataAtualizacao() {
         return dataAtualizacao;
     }
 
-    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+    public void setDataAtualizacao(String dataAtualizacao) {
         this.dataAtualizacao = dataAtualizacao;
     }
 }

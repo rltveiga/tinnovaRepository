@@ -4,8 +4,6 @@ import com.tinnova.tinnovaproject.model.domain.Veiculo;
 import com.tinnova.tinnovaproject.model.dto.VeiculoDTO;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 /**
  * @author Rafael Veiga
  */
